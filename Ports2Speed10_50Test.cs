@@ -34,10 +34,22 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
+        /// <summary>
+		/// Reads the value of the register, which is responsible for the mode of operation of the network card
+		/// </summary>
+        public int portcount = (int)DataStructurePorts.PortCount.Ports2;
 
-        public int PortCount { get; set; }
-        public int Port00Speed = DataStructurePorts.PortCount;
-        public int Port01Speed;
+        /// <summary>
+		/// Reads the value of the register, which is responsible for port 1 speed 
+		/// </summary>
+        public int port00speed = (int)DataStructureFwRegister.Registers.Port00Speed;
+
+        /// <summary>
+		/// Reads the value of the register, which is responsible for port 1 speed 
+		/// </summary>
+        public int port01speed = (int)DataStructureFwRegister.Registers.Port01Speed;
+
+
         #endregion
     }
     

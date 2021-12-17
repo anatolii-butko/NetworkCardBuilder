@@ -6,38 +6,16 @@ namespace NetworkCardBuilder
 {
 	class DataStructurePorts
 	{
-        public enum Workmode
+        /// <summary>
+        /// Enum PortCount consists of different states that are responsible for network cards with different number of ports
+        /// </summary>
+        public enum PortCount
         {
-            Port1,
-            Ports2,
-            Ports4,
-            Ports8
+            Port1 = 1,
+            Ports2 = 2,
+            Ports4 = 4,
+            Ports8 = 8
         }
-        public int RegisterPortsCount(Workmode wm)
-            {
-            switch (wm)
-            {
-                case Workmode.Port1:
-                {
-                    return 1;
-                }
-                case Workmode.Ports2:
-                {
-                    return 2;
-                }
-            
-                case Workmode.Ports4:
-                {
-                    return 4;
-                }
-                case Workmode.Ports8:
-                {
-                    return 8;
-                }
-                default:
-                    break;
-
-            }
-            }
+        
     }
 }
