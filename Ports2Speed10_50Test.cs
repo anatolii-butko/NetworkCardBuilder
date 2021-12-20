@@ -5,18 +5,18 @@ using System.Text;
 namespace NetworkCardBuilder
 {
     /// <summary>
-    /// The description.
+    /// The TestCase claass with input data: Port1 speed 10, Port2 speed 50.
     /// </summary>
-    class Ports2Speed10_50Test
+    class Ports2Speed10_50Test : NetworkCardFlowBuilder
 	{
         #region Fields and Constants
         /// <summary>
         /// The description.
         /// </summary>
-        private new const string TestDescription = "Main Procedure: \n 1. Set PortCount=2" + "\n 2. Set Port00Speed=10" + "\n 3. Set Port01Speed=50" + "\n 4. Perform Reset" + "\n 5. Check PortCount" + "\n 6. Check FW register Port00Speed" + "\n 7. Check FW register Port01Speed" + "\n 8. Check FW register TotalNetworkCardOutcomeSpeed";
+        private new const string TestDescription = "Main Procedure: \n 1. Set PortCount, Set Port##Speed" + "\n 2. Perform Reset" + "\n 3. Check PortCount, Check FW registers Port##Speed";
 
         /// <summary>
-        /// TotalNetworkCardOutcomeSpeed
+        /// Name.
         /// </summary>
         private new const string TestName = "Ports2Speed10_50Test";
         #endregion
@@ -37,17 +37,17 @@ namespace NetworkCardBuilder
         /// <summary>
 		/// Reads the value of the register, which is responsible for the mode of operation of the network card
 		/// </summary>
-        public int portcount = (int)DataStructurePorts.PortCount.Ports2;
+        public DataStructureFwRegister portcount = DataStructureFwRegister.PortCount;
 
         /// <summary>
 		/// Reads the value of the register, which is responsible for port 1 speed 
 		/// </summary>
-        public int port00speed = (int)DataStructureFwRegister.Registers.Port00Speed;
+        private DataStructureFwRegister port00speed = DataStructureFwRegister.Port00Speed;
 
         /// <summary>
 		/// Reads the value of the register, which is responsible for port 1 speed 
 		/// </summary>
-        public int port01speed = (int)DataStructureFwRegister.Registers.Port01Speed;
+        private DataStructureFwRegister port01speed = DataStructureFwRegister.Port01Speed;
 
 
         #endregion

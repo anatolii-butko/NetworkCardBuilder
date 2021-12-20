@@ -4,8 +4,11 @@ using System.Text;
 
 namespace NetworkCardBuilder
 {
-	class NetworkCardTestTemplate
-	{
+    /// <summary>
+    /// The class which used as template for testing .
+    /// </summary>
+    public class NetworkCardTestTemplate
+    {
         #region Fields and Constants
 
         #endregion
@@ -19,7 +22,14 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Public Methods
-
+        /// <summary>
+        /// A method that sets the port speed. Returns true if the port is active / Always returns true.
+        /// </summary>
+        public Boolean SetPortSpeed()
+        { 
+            return true;
+        }
+        
         #endregion
     }
 }

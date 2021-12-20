@@ -4,18 +4,29 @@ using System.Text;
 
 namespace NetworkCardBuilder
 {
-	class DataStructurePorts
-	{
+    /// <summary>
+    /// Enum DataStructurePort consists of different states that are responsible for network cards with different number of ports
+    /// </summary>
+    public enum DataStructurePort
+    {
         /// <summary>
-        /// Enum PortCount consists of different states that are responsible for network cards with different number of ports
+        /// FW register which returns quantity of ports for the network card with 1 Port
         /// </summary>
-        public enum PortCount
-        {
-            Port1 = 1,
-            Ports2 = 2,
-            Ports4 = 4,
-            Ports8 = 8
-        }
-        
+        Port1 = 1,
+
+        /// <summary>
+        /// FW register which returns quantity of ports for the network card with 2 Ports
+        /// </summary>
+        Ports2 = 2,
+
+        /// <summary>
+        /// FW register which returns quantity of ports for the network card with 4 Ports
+        /// </summary>
+        Ports4 = 4,
+
+        /// <summary>
+        /// FW register which returns quantity of ports for the network card with 8 Ports
+        /// </summary>
+        Ports8 = 8
     }
 }
