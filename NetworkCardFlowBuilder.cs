@@ -19,7 +19,7 @@ namespace NetworkCardBuilder
 
         #region Properties and Indexers
         ///some code
-        
+        protected override DataStructureFwRegister PortCount => DataStructureFwRegister.PortCount;
 
         #endregion
 

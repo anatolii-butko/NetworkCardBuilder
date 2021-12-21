@@ -19,6 +19,8 @@ namespace NetworkCardBuilder
         /// Name.
         /// </summary>
         private new const string TestName = "Ports2Speed10_50Test";
+        
+        
         #endregion
 
         #region Constructors and Destructors
@@ -37,7 +39,7 @@ namespace NetworkCardBuilder
         /// <summary>
 		/// Reads the value of the register, which is responsible for the mode of operation of the network card
 		/// </summary>
-        protected DataStructureFwRegister PortCount = DataStructureFwRegister.PortCount;
+        protected virtual DataStructureFwRegister PortCount = DataStructureFwRegister.PortCount;
 
         /// <summary>
 		/// Reads the value of the register, which is responsible for port 1 speed 

@@ -29,7 +29,10 @@ namespace NetworkCardBuilder
         {
             return true;
         }
-        
+        public bool SetQuantityOfPorts(DataStructureFwRegister PortCount)
+        {
+            return true;
+        }
         #endregion
     }
 }
