@@ -18,9 +18,11 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
-
+        ///some code
         
+
         #endregion
+
 
         #region Public Methods
 
@@ -28,9 +30,10 @@ namespace NetworkCardBuilder
         /// <summary>
         /// A method that prepares a network card for testing by determining the number of ports and input speeds.
         /// </summary>        
-        void Prepare()
-        { }
-
+        bool Prepare()
+        {
+            return false;
+        }
         /// <summary>
         /// A method that clears register buffer data.
         /// </summary>

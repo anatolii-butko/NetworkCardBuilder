@@ -37,17 +37,17 @@ namespace NetworkCardBuilder
         /// <summary>
 		/// Reads the value of the register, which is responsible for the mode of operation of the network card
 		/// </summary>
-        public DataStructureFwRegister portcount = DataStructureFwRegister.PortCount;
+        protected DataStructureFwRegister PortCount = DataStructureFwRegister.PortCount;
 
         /// <summary>
 		/// Reads the value of the register, which is responsible for port 1 speed 
 		/// </summary>
-        private DataStructureFwRegister port00speed = DataStructureFwRegister.Port00Speed;
+        protected DataStructureFwRegister Port00Speed = DataStructureFwRegister.Port00Speed;
 
         /// <summary>
 		/// Reads the value of the register, which is responsible for port 1 speed 
 		/// </summary>
-        private DataStructureFwRegister port01speed = DataStructureFwRegister.Port01Speed;
+        protected DataStructureFwRegister Port01Speed = DataStructureFwRegister.Port01Speed;
 
 
         #endregion

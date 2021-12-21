@@ -18,15 +18,15 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
-
+       
         #endregion
 
         #region Public Methods
         /// <summary>
         /// A method that sets the port speed. Returns true if the port is active / Always returns true.
         /// </summary>
-        public Boolean SetPortSpeed()
-        { 
+        public bool SetPortSpeed(DataStructureFwRegister PortCount)
+        {
             return true;
         }
         
