@@ -37,22 +37,30 @@ namespace NetworkCardBuilder
 
         #region Properties and Indexers
         /// <summary>
-		/// Reads the value of the register, which is responsible for the mode of operation of the network card
+		/// Reads the value of the register, which is responsible for quantity of ports for the network card. 
+        /// Overrides the property to access it in class NetworkCardFlowBuilder 
 		/// </summary>
-        protected virtual DataStructureFwRegister PortCount = DataStructureFwRegister.PortCount;
+        protected override DataStructureFwRegister PortCount => DataStructureFwRegister.PortCount;
 
         /// <summary>
 		/// Reads the value of the register, which is responsible for port 1 speed 
-		/// </summary>
-        protected DataStructureFwRegister Port00Speed = DataStructureFwRegister.Port00Speed;
+		/// Overrides the property to access it in class NetworkCardFlowBuilder 
+        /// </summary>
+        protected override DataStructureFwRegister Port00Speed => DataStructureFwRegister.Port00Speed;
 
         /// <summary>
-		/// Reads the value of the register, which is responsible for port 1 speed 
-		/// </summary>
-        protected DataStructureFwRegister Port01Speed = DataStructureFwRegister.Port01Speed;
+        /// Reads the value of the register, which is responsible for port 2 speed. 
+        /// Overrides the property to access it in class NetworkCardFlowBuilder
+        /// </summary>
+        protected override DataStructureFwRegister Port01Speed => DataStructureFwRegister.Port01Speed;
 
 
         #endregion
+        public void Test1()
+        {
+            this.SetPortSpeed(Port00Speed, Port01Speed);
+           
+        }
     }
     
 }

@@ -18,9 +18,8 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
-        ///some code
-        protected override DataStructureFwRegister PortCount => DataStructureFwRegister.PortCount;
-
+        
+        
         #endregion
 
 
@@ -30,21 +29,28 @@ namespace NetworkCardBuilder
         /// <summary>
         /// A method that prepares a network card for testing by determining the number of ports and input speeds.
         /// </summary>        
-        bool Prepare()
-        {
-            return false;
+        protected bool Prepare(DataStructureFwRegister PortCount)  
+        {   
+            return true; 
         }
+            
+            
+       
         /// <summary>
         /// A method that clears register buffer data.
         /// </summary>
-        void Clean()
-        { }
+        protected void Clean()
+        {
+        
+        }
 
         /// <summary>
         /// A method that performs the test case.
         /// </summary>
-        void Run()
-        { }
+        protected void Run()
+        {
+        
+        }
 
     }
 }
