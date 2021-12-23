@@ -56,11 +56,7 @@ namespace NetworkCardBuilder
 
 
         #endregion
-        public void Test1()
-        {
-            this.SetPortSpeed(Port00Speed, Port01Speed);
-           
-        }
+        
     }
     
 }
