@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NetworkCardBuilder
+﻿namespace NetworkCardBuilder
 {
     /// <summary>
     /// The class which used as template for testing .

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NetworkCardBuilder
+﻿namespace NetworkCardBuilder
 {
     /// <summary>
     /// The TestCase claass with input data: Port1 speed 10, Port2 speed 50.

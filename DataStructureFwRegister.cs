@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NetworkCardBuilder
+﻿namespace NetworkCardBuilder
 {
     /// <summary>
     /// Enum DataStructureFwRegister consists of different registers for detecting current number of ports and their speeds

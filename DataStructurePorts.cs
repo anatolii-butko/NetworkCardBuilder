@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NetworkCardBuilder
+﻿namespace NetworkCardBuilder
 {
     /// <summary>
     /// Enum DataStructurePort consists of different states that are responsible for network cards with different number of ports
