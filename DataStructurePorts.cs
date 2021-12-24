@@ -1,7 +1,8 @@
 ﻿namespace NetworkCardBuilder
 {
     /// <summary>
-    /// Enum DataStructurePort consists of different states that are responsible for network cards with different number of ports
+    /// Enum DataStructurePort consists of different states that are responsible 
+    /// for network cards with different number of ports
     /// </summary>
     public enum DataStructurePort
     {

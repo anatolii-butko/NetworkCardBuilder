@@ -1,7 +1,8 @@
 ﻿namespace NetworkCardBuilder
 {
     /// <summary>
-    /// Enum DataStructureFwRegister consists of different registers for detecting current number of ports and their speeds
+    /// Enum DataStructureFwRegister consists of different registers for detecting 
+    /// current number of ports and their speeds
     /// </summary>
     public enum DataStructureFwRegister
     {

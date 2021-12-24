@@ -10,7 +10,7 @@
 
 		/// <summary>		/// Reads the value of the register, which is responsible for port 1 speed 		/// </summary>        protected virtual DataStructureFwRegister Port01Speed => DataStructureFwRegister.Port01Speed;
 
-		/// <summary>		/// A dictionary that will contain pairs of values {key and value} 		/// where the key is the port number and the value is its speed.		/// </summary>
+		/// <summary>		/// A dictionary that will contain pairs of {key and value} 		/// where the key is the port number and the value is its speed.		/// </summary>
 		protected virtual Dictionary<DataStructureFwRegister, int> OurDictionary => new Dictionary<DataStructureFwRegister, int>();
 
 		#endregion
