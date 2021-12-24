@@ -1,4 +1,6 @@
-﻿namespace NetworkCardBuilder
+﻿using System.Collections.Generic;
+
+namespace NetworkCardBuilder
 {
     /// <summary>
     /// The TestCase claass with input data: Port1 speed 10, Port2 speed 50.
@@ -50,9 +52,23 @@
         /// </summary>
         protected override DataStructureFwRegister Port01Speed => DataStructureFwRegister.Port01Speed;
 
+        /// <summary>
+        /// Reads the value of the register, which is responsible for quantity of ports for the network card. 
+        /// Overrides the property to access it in class NetworkCardFlowBuilder 
+        /// </summary>
 
+        /// <summary>
+        /// A dictionary that will contain pairs of values {key and value} 
+		/// where the key is the port number and the value is its speed. 
+        /// Overrides the dictionary to access it in class NetworkCardFlowBuilder 
+        /// </summary>
+        protected override Dictionary<DataStructureFwRegister, int> OurDictionary => new Dictionary<DataStructureFwRegister, int>()
+            {
+                {DataStructureFwRegister.Port00Speed, 10},
+                {DataStructureFwRegister.Port01Speed, 50}
+            };
         #endregion
-        
+
     }
-    
+
 }

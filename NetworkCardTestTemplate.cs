@@ -20,7 +20,8 @@
 
         #region Public Methods
         /// <summary>
-        /// A method that sets the ports speed. Returns true if the port is active / Always returns true.
+        /// A method that sets the ports speed. 
+        /// Returns true if the port is active / Always returns true.
         /// </summary>
         public virtual bool SetPortSpeed(DataStructureFwRegister Port00Speed, DataStructureFwRegister Port01Speed)
         { 
@@ -29,9 +30,10 @@
         }
 
         /// <summary>
-		/// A method that sets the quantity of ports. Returns true if the port is active / Always returns true.
+		/// A method that sets the quantity of ports. 
+        /// Returns true if the port is active / Always returns true.
 		/// </summary>
-        public virtual bool SetQuantityOfPorts(DataStructureFwRegister PortCount)
+        public virtual bool SetQuantityOfPorts(DataStructureFwRegister PortsCount)
         {
             
             return true;
