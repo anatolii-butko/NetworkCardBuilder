@@ -34,37 +34,8 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
-        /// <summary>
-		/// Reads the value of the register, which is responsible for quantity 
-        /// of ports for the network card. 
-        /// Overrides the property to access it in class NetworkCardFlowBuilder 
-		/// </summary>
-        protected override DataStructureFwRegister PortCount => DataStructureFwRegister.PortCount;
-
-        /// <summary>
-		/// Reads the value of the register, which is responsible for port 1 speed 
-		/// Overrides the property to access it in class NetworkCardFlowBuilder 
-        /// </summary>
-        protected override DataStructureFwRegister Port00Speed => DataStructureFwRegister.Port00Speed;
-
-        /// <summary>
-        /// Reads the value of the register, which is responsible for port 2 speed. 
-        /// Overrides the property to access it in class NetworkCardFlowBuilder
-        /// </summary>
-        protected override DataStructureFwRegister Port01Speed => DataStructureFwRegister.Port01Speed;
-
-        /// <summary>
-        /// Reads the value of the register, which is responsible for quantity 
-        /// of ports for the network card. 
-        /// Overrides the property to access it in class NetworkCardFlowBuilder 
-        /// </summary>
-
-        /// <summary>
-        /// A dictionary that will contain pairs {key and value} where the key is 
-        /// the port number and the value is its speed. 
-        /// Overrides the dictionary to access it in class NetworkCardFlowBuilder 
-        /// </summary>
-        protected override Dictionary<DataStructureFwRegister, int> OurDictionary => new Dictionary<DataStructureFwRegister, int>()
+        
+        protected override Dictionary<DataStructureFwRegister, int> Portsspeeds => new Dictionary<DataStructureFwRegister, int>()
             {
                 {DataStructureFwRegister.Port00Speed, 10},
                 {DataStructureFwRegister.Port01Speed, 50}
