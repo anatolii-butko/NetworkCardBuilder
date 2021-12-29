@@ -42,6 +42,9 @@ namespace NetworkCardBuilder
 			return retVal;
 		}
 
+		/// <summary>
+		/// A method that clears register buffer data.
+		/// </summary>
 		protected void Clean()
 		{
 		

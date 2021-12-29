@@ -34,7 +34,12 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
-        
+
+        /// <summary>
+        /// A dictionary that will contain pairs {key and value} where the key is 
+        /// the port number and the value is its speed. 
+        /// Overrides the dictionary to access it in class NetworkCardFlowBuilder.
+        /// </summary>
         protected override Dictionary<DataStructureFwRegister, int> Portsspeeds => new Dictionary<DataStructureFwRegister, int>()
             {
                 {DataStructureFwRegister.Port00Speed, 10},
