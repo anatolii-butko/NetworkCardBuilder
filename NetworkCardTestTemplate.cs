@@ -35,7 +35,8 @@ namespace NetworkCardBuilder
         /// which accepts the dictionary of pairs: port number; speed.
         /// </param>
         /// <returns>
-        /// Simics response return(bool).
+        /// Simics response return(bool) true if all ports speeds set, 
+        /// false if at least one port speed is not set.
         /// </returns>
         public virtual bool SetPortSpeed(Dictionary<DataStructureFwRegister, int> portsspeeds)
         {
@@ -55,14 +56,15 @@ namespace NetworkCardBuilder
 		/// paramname: int portCount, number of ports to be set.
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool).
+		/// Simics response return(bool) true if port count set, 
+        /// false if port count is not set.
 		/// </returns>
         public virtual bool SetQuantityOfPorts(int portCount)
         {
             bool retVal = true;
             for (int i = 1; i <= portCount; i++)
             { 
-                retVal &= SetPortsToActive(i, out int countOfActivePorts);
+                retVal &= SetPortsToActive(portCount, i, out int countOfActivePorts);
             }
 
             return retVal;
@@ -78,7 +80,9 @@ namespace NetworkCardBuilder
         /// key is the port number and value is the port speed respectively 
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool).
+		/// Simics response return(bool) true if port count set and all ports speeds meet
+        /// requirements {0; 10; 25; 50; 100}; false if at least one port speed do not meet requirements or
+        /// port count null.
 		/// </returns>
         protected bool SendAdminCommandSetPort(DataStructureFwRegister key, int value)
         {
@@ -95,7 +99,7 @@ namespace NetworkCardBuilder
 		/// <returns>
 		/// Simics response return(bool).
 		/// </returns>
-        protected bool SetPortsToActive(int count, out int countOfActivePorts)
+        protected bool SetPortsToActive(int count, int portnum, out int countOfActivePorts)
         {
 
             if (count != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)))
