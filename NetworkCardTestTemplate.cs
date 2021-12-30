@@ -7,7 +7,7 @@ namespace NetworkCardBuilder
     /// </summary>
     public class NetworkCardTestTemplate
     {
-        public IEnumerable<KeyValuePair<DataStructureFwRegister, int>> Portsspeeds { get; private set; }
+
         #region Fields and Constants
 
         #endregion
@@ -30,10 +30,17 @@ namespace NetworkCardBuilder
         /// Returns true if all specified ports are active and their speeds are set and meet. 
         /// Always returns true if everything goes according to plan.
         /// </summary>
+        /// <param>
+        /// paramname:Dictionary<DataStructureFwRegister, int> portsspeeds, 
+        /// which accepts the dictionary of pairs: port number; speed.
+        /// </param>
+        /// <returns>
+        /// Simics response return(bool).
+        /// </returns>
         public virtual bool SetPortSpeed(Dictionary<DataStructureFwRegister, int> portsspeeds)
         {
             bool retVal = true;
-            foreach (KeyValuePair<DataStructureFwRegister, int> item in this.Portsspeeds)
+            foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
             {
                 retVal &= SendAdminCommandSetPort(item.Key, item.Value);
             }
@@ -44,63 +51,69 @@ namespace NetworkCardBuilder
 		/// A method that sets the quantity of ports. 
         /// Returns true if the port is active / Always returns true.
 		/// </summary>
+        /// <param>
+		/// paramname: int portCount, number of ports to be set.
+		/// </param>
+		/// <returns>
+		/// Simics response return(bool).
+		/// </returns>
         public virtual bool SetQuantityOfPorts(int portCount)
         {
+            bool retVal = true;
+            for (int i = 1; i <= portCount; i++)
+            { 
+                retVal &= SetPortsToActive(i, out int countOfActivePorts);
+            }
+
+            return retVal;
             
-            return true;
         }
 
         /// <summary>
 		/// A new method that verifies that port speeds meet compliance requirements. 
 		/// Returns true if the port speed value is {0; 10; 25; 50; 100} and port number not null.
 		/// </summary>
-
+        /// <param>
+		/// paramname: DataStructureFwRegister key, paramname: int value, 
+        /// key is the port number and value is the port speed respectively 
+		/// </param>
+		/// <returns>
+		/// Simics response return(bool).
+		/// </returns>
         protected bool SendAdminCommandSetPort(DataStructureFwRegister key, int value)
         {
-            bool retVal = true;
-            retVal &= key != null && ((value == 0) || (value == 10) || (value == 25) || (value == 50) || (value == 100));
-            ///Other method realization
-            /// retVal &= (key == null) ? false : (value == 10) ? true : (value == 25) ? true : (value == 50) ? true : (value == 100) ? true : false;
-            return retVal;
+            return key != null && ((value == 0) || (value == 10) || (value == 25) || (value == 50) || (value == 100));
         }
 
         /// <summary>
-		/// A old unsed method that verifies that port speeds meet compliance requirements. 
-		/// Returns true if the port speed value is {0; 10; 25; 50; 100}.
+		/// A new method that verifies that ports counts meet compliance requirements. 
+		/// Returns true if the ports count is {1; 2; 4; 8} and ports counts not null.
 		/// </summary>
-        protected bool SendAdminCommandSetPort_Old(DataStructureFwRegister key, int value)
+        /// <param>
+		/// Method without parametrs.
+		/// </param>
+		/// <returns>
+		/// Simics response return(bool).
+		/// </returns>
+        protected bool SetPortsToActive(int count, out int countOfActivePorts)
         {
-            bool retVal = true;
-            if (key == null)
-            {
-                retVal &= false;
-            }
-            switch (value)
-            {
-                case 0:
-                    retVal &= true;
-                    break;
-                case 10:
-                    retVal &= true;
-                    break;
-                case 25:
-                    retVal &= true;
-                    break;
-                case 50:
-                    retVal &= true;
-                    break;
-                case 100:
-                    retVal &= true;
-                    break;
-                default:
-                    retVal &= true;
-                    break;
-            }
-            return retVal;
 
+            if (count != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)))
+            {
+                countOfActivePorts = count;
+                return true;
+                
+            }
+            else
+            {
+                countOfActivePorts = 0;
+                return false;
+                
+            }
+         
+           
         }
 
-        
         #endregion
     }
 }

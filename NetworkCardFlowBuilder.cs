@@ -22,17 +22,24 @@ namespace NetworkCardBuilder
 		/// where the key is the port number and the value is its speed.
 		/// </summary>
 		protected virtual Dictionary<DataStructureFwRegister, int> Portsspeeds => new Dictionary<DataStructureFwRegister, int>();
-		
+
 		#endregion
 
 
 		#region Public Methods
 
 		#endregion
-        /// <summary>
+		/// <summary>
 		/// A method that prepares a network card for testing by determining the 
 		/// number of ports and input speeds.
-		/// </summary>        
+		/// </summary>
+		/// <param>
+		/// Method without parametrs.
+		/// </param>
+		/// <returns>
+		/// Simics response return(bool).
+		/// </returns>
+
 		protected bool Prepare()  
 		{
 			bool retVal = true;
@@ -45,6 +52,12 @@ namespace NetworkCardBuilder
 		/// <summary>
 		/// A method that clears register buffer data.
 		/// </summary>
+		/// <param>
+		/// Method without parametrs.
+		/// </param>
+		/// <returns>
+		/// Simics response return(bool).
+		/// </returns>
 		protected void Clean()
 		{
 		
@@ -53,6 +66,12 @@ namespace NetworkCardBuilder
 		/// <summary>
 		/// A method that performs the test case.
 		/// </summary>
+		/// <param>
+		/// Method without parametrs.
+		/// </param>
+		/// <returns>
+		/// Simics response return(bool).
+		/// </returns>
 		protected void Run()
 		{
 		
