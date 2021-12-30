@@ -7,7 +7,6 @@ namespace NetworkCardBuilder
     /// </summary>
     public class NetworkCardTestTemplate
     {
-
         #region Fields and Constants
 
         #endregion
@@ -18,12 +17,9 @@ namespace NetworkCardBuilder
 
         #region Properties and Indexers
 
-
         #endregion
 
         #region Public Methods
-
-
 
         /// <summary>
         /// A method that sets the ports speed. 
