@@ -58,9 +58,9 @@ namespace NetworkCardBuilder
         public virtual bool SetQuantityOfPorts(int portCount)
         {
             bool retVal = true;
-            for (int i = 1; i <= portCount; i++)
+            for (int portnum = 1; portnum <= portCount; portnum++)
             { 
-                retVal &= SetPortsToActive(portCount, i, out int countOfActivePorts);
+                retVal &= SetPortsToActive(portCount, portnum, out int countOfActivePorts);
             }
 
             return retVal;
