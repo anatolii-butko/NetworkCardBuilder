@@ -59,7 +59,6 @@ namespace NetworkCardBuilder
         public virtual bool SetQuantityOfPorts(Dictionary<DataStructureFwRegister, int> portsspeeds)
         {
             bool retVal = true;
-            int portcount = portsspeeds.Count;
             retVal &= SetPortsToActive(portcount);
             return retVal;
             
