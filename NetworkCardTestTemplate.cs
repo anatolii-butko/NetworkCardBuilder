@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NetworkCardBuilder
 {
@@ -55,14 +56,11 @@ namespace NetworkCardBuilder
 		/// Simics response return(bool) true if port count set, 
         /// false if port count is not set.
 		/// </returns>
-        public virtual bool SetQuantityOfPorts(int portCount)
+        public virtual bool SetQuantityOfPorts(Dictionary<DataStructureFwRegister, int> portsspeeds)
         {
             bool retVal = true;
-            for (int i = 1; i <= portCount; i++)
-            { 
-                retVal &= SetPortsToActive(portCount, i, out int countOfActivePorts);
-            }
-
+            int portcount = portsspeeds.Count;
+            retVal &= SetPortsToActive(portcount);
             return retVal;
             
         }
@@ -95,23 +93,19 @@ namespace NetworkCardBuilder
 		/// <returns>
 		/// Simics response return(bool).
 		/// </returns>
-        protected bool SetPortsToActive(int count, int portnum, out int countOfActivePorts)
+        protected bool SetPortsToActive(Dictionary<DataStructureFwRegister, int> portsspeeds, out int countOfActivePorts)
         {
+            bool retVal = true; 
+            countOfActivePorts = 0;
+            int count = portsspeeds.Count;
+            foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
+            {
+                retVal &= item.Key != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)) && item.Value != null &&((item.Value == 10) || (item.Value == 25) || (item.Value == 50) || (item.Value == 100));
+                countOfActivePorts += Convert.ToInt32(retVal);
+            }
 
-            if (count != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)))
-            {
-                countOfActivePorts = count;
-                return true;
-                
-            }
-            else
-            {
-                countOfActivePorts = 0;
-                return false;
-                
-            }
-         
-           
+            return retVal;
+
         }
 
         #endregion

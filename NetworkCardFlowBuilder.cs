@@ -43,7 +43,7 @@ namespace NetworkCardBuilder
 		protected bool Prepare()  
 		{
 			bool retVal = true;
-			retVal &= this.SetQuantityOfPorts(this.Portsspeeds.Count);
+			retVal &= this.SetQuantityOfPorts(this.Portsspeeds);
 			retVal &= this.SetPortSpeed(this.Portsspeeds);
 			
 			return retVal;
