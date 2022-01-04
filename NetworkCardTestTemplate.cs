@@ -98,11 +98,19 @@ namespace NetworkCardBuilder
             bool retVal = true; 
             countOfActivePorts = 0;
             int count = portsspeeds.Count;
-            foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
+            if (count != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)))
             {
-                retVal &= item.Key != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)) && item.Value != null &&((item.Value == 10) || (item.Value == 25) || (item.Value == 50) || (item.Value == 100));
-                countOfActivePorts += Convert.ToInt32(retVal);
+                for (int i = 0; i < count; i++)
+                {
+                    if (portsspeeds.Values[i] != null && ((portsspeeds.Values[i] == 10) || (portsspeeds.Values[i] == 25) || (portsspeeds.Values[i] == 50) || (portsspeeds.Values[i] == 100)))
+                    {
+                        retVal = true;
+                        countOfActivePorts++;
+                    }
+                    else retVal = false;
+                }
             }
+            else retVal = false;
 
             return retVal;
 
