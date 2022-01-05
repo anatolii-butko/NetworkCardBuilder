@@ -17,6 +17,11 @@ namespace NetworkCardBuilder
         #endregion
 
         #region Properties and Indexers
+        /// <summary>
+		/// A dictionary that will contain pairs of {key and value} 
+		/// where the key is the port number and the value is its speed.
+		/// </summary>
+		protected virtual Dictionary<DataStructureFwRegister, int> Portsspeeds => new Dictionary<DataStructureFwRegister, int>();
 
         #endregion
 
@@ -32,10 +37,10 @@ namespace NetworkCardBuilder
         /// which accepts the dictionary of pairs: port number; speed.
         /// </param>
         /// <returns>
-        /// Simics response return(bool) true if all ports speeds set, 
+        /// Returns(bool) true if all ports speeds set, 
         /// false if at least one port speed is not set.
         /// </returns>
-        public virtual bool SetPortSpeed(Dictionary<DataStructureFwRegister, int> portsspeeds)
+        public virtual bool SetPortSpeed()
         {
             bool retVal = true;
             foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
@@ -56,10 +61,11 @@ namespace NetworkCardBuilder
 		/// Simics response return(bool) true if port count set, 
         /// false if port count is not set.
 		/// </returns>
-        public virtual bool SetQuantityOfPorts(Dictionary<DataStructureFwRegister, int> portsspeeds)
+        public virtual bool SetQuantityOfPorts()
         {
             bool retVal = true;
-            retVal &= SetPortsToActive(portcount);
+            int portcount = this.Portsspeeds.Count;
+            retVal &= SetPortsToActive();
             return retVal;
             
         }
@@ -97,19 +103,11 @@ namespace NetworkCardBuilder
             bool retVal = true; 
             countOfActivePorts = 0;
             int count = portsspeeds.Count;
-            if (count != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)))
+            foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    if (portsspeeds.Values[i] != null && ((portsspeeds.Values[i] == 10) || (portsspeeds.Values[i] == 25) || (portsspeeds.Values[i] == 50) || (portsspeeds.Values[i] == 100)))
-                    {
-                        retVal = true;
-                        countOfActivePorts++;
-                    }
-                    else retVal = false;
-                }
+                retVal &= item.Key != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)) && item.Value != null &&((item.Value == 10) || (item.Value == 25) || (item.Value == 50) || (item.Value == 100));
+                countOfActivePorts += Convert.ToInt32(retVal);
             }
-            else retVal = false;
 
             return retVal;
 

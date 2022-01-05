@@ -16,12 +16,6 @@ namespace NetworkCardBuilder
 		#endregion
 
 		#region Properties and Indexers
-        
-		/// <summary>
-		/// A dictionary that will contain pairs of {key and value} 
-		/// where the key is the port number and the value is its speed.
-		/// </summary>
-		protected virtual Dictionary<DataStructureFwRegister, int> Portsspeeds => new Dictionary<DataStructureFwRegister, int>();
 
 		#endregion
 
@@ -37,14 +31,14 @@ namespace NetworkCardBuilder
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool).
+		/// Returns(bool) always returns true if everything goes according to plan.
 		/// </returns>
 
 		protected bool Prepare()  
 		{
 			bool retVal = true;
-			retVal &= this.SetQuantityOfPorts(this.Portsspeeds);
-			retVal &= this.SetPortSpeed(this.Portsspeeds);
+			retVal &= this.SetQuantityOfPorts();
+			retVal &= this.SetPortSpeed();
 			
 			return retVal;
 		}
@@ -56,7 +50,7 @@ namespace NetworkCardBuilder
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool).
+		/// Returns(bool) always returns true if everything goes according to plan.
 		/// </returns>
 		protected void Clean()
 		{
@@ -70,7 +64,7 @@ namespace NetworkCardBuilder
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool).
+		/// Returns(bool) always returns true if everything goes according to plan.
 		/// </returns>
 		protected void Run()
 		{
