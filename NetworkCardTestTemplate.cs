@@ -29,21 +29,19 @@ namespace NetworkCardBuilder
 
         /// <summary>
         /// A method that sets the ports speed. 
-        /// Returns true if all specified ports are active and their speeds are set and meet. 
-        /// Always returns true if everything goes according to plan.
+        /// Returns true if all specified ports are active and their speeds are set and meet requirements. 
         /// </summary>
         /// <param>
         /// paramname:Dictionary<DataStructureFwRegister, int> portsspeeds, 
         /// which accepts the dictionary of pairs: port number; speed.
         /// </param>
         /// <returns>
-        /// Returns(bool) true if all ports speeds set, 
-        /// false if at least one port speed is not set.
+        /// Returns(bool) true if all ports speeds set, false if at least one port speed is not set.
         /// </returns>
         public virtual bool SetPortSpeed()
         {
             bool retVal = true;
-            foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
+            foreach (KeyValuePair<DataStructureFwRegister, int> item in Portsspeeds)
             {
                 retVal &= SendAdminCommandSetPort(item.Key, item.Value);
             }
@@ -52,36 +50,34 @@ namespace NetworkCardBuilder
 
         /// <summary>
 		/// A method that sets the quantity of ports. 
-        /// Returns true if the port is active / Always returns true.
+        /// Returns true if the all port is active and meet requirements.
 		/// </summary>
         /// <param>
 		/// paramname: int portCount, number of ports to be set.
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool) true if port count set, 
-        /// false if port count is not set.
+		/// Returns(bool) true if port count set, and all ports activated, 
+        /// false if port count is not set or at least one port not activated.
 		/// </returns>
         public virtual bool SetQuantityOfPorts()
         {
             bool retVal = true;
-            int portcount = this.Portsspeeds.Count;
-            retVal &= SetPortsToActive();
+            retVal &= Portsspeeds.Count != null && ((Portsspeeds.Count == 1) || (Portsspeeds.Count == 2) || (Portsspeeds.Count == 4) || (Portsspeeds.Count == 8)) ? retVal &= SetPortsToActive(Portsspeeds.Count, out int countOfActivePorts) : retVal &= false;
             return retVal;
             
         }
 
         /// <summary>
-		/// A new method that verifies that port speeds meet compliance requirements. 
-		/// Returns true if the port speed value is {0; 10; 25; 50; 100} and port number not null.
+		/// A method that verifies that port speeds meet compliance requirements. 
+		/// Returns true if the port speed value is {0; 10; 25; 50; 100} and port count not null.
 		/// </summary>
         /// <param>
 		/// paramname: DataStructureFwRegister key, paramname: int value, 
         /// key is the port number and value is the port speed respectively 
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool) true if port count set and all ports speeds meet
-        /// requirements {0; 10; 25; 50; 100}; false if at least one port speed do not meet requirements or
-        /// port count null.
+		/// Returns(bool) true if port count set and all ports speeds meet requirements {0; 10; 25; 50; 100}; 
+        /// false if at least one port speed do not meet requirements or port count null.
 		/// </returns>
         protected bool SendAdminCommandSetPort(DataStructureFwRegister key, int value)
         {
@@ -89,28 +85,36 @@ namespace NetworkCardBuilder
         }
 
         /// <summary>
-		/// A new method that verifies that ports counts meet compliance requirements. 
+		/// A method that verifies that ports counts meet compliance requirements and activate it. 
 		/// Returns true if the ports count is {1; 2; 4; 8} and ports counts not null.
 		/// </summary>
         /// <param>
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Simics response return(bool).
+		/// Returns(bool) true if all ports meet requirements and activated, 
+        /// false if at least one port not activated or not meet requirements;
+        /// out(int)countOfActivePorts.
 		/// </returns>
-        protected bool SetPortsToActive(Dictionary<DataStructureFwRegister, int> portsspeeds, out int countOfActivePorts)
+        protected bool SetPortsToActive(int count, out int countOfActivePorts)
         {
-            bool retVal = true; 
             countOfActivePorts = 0;
-            int count = portsspeeds.Count;
-            foreach (KeyValuePair<DataStructureFwRegister, int> item in portsspeeds)
+            bool retVal = true;
+            foreach (var j in Portsspeeds.Values)
             {
-                retVal &= item.Key != null && ((count == 1) || (count == 2) || (count == 4) || (count == 8)) && item.Value != null &&((item.Value == 10) || (item.Value == 25) || (item.Value == 50) || (item.Value == 100));
+                retVal &= j != null && (j == 10 || j == 25 || j == 50 || j == 100);
                 countOfActivePorts += Convert.ToInt32(retVal);
             }
-
+           
             return retVal;
+            ICollection<string> = Portsspeeds.Values.ToString;
+            string[] speeds;
+            void CopyTo(speeds array, int 0);
+            for (int j = 0; j < Portsspeeds.Count; j++)
+            {
+                retVal &= Convert.ToInt32(speeds[j]) != null && (Convert.ToInt32(speeds[j]) == 10 || Convert.ToInt32(speeds[j]) == 25 || Convert.ToInt32(speeds[j]) == 50 || Convert.ToInt32(speeds[j]) == 100);
 
+            }
         }
 
         #endregion
