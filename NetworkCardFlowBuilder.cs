@@ -66,9 +66,12 @@ namespace NetworkCardBuilder
 		/// <returns>
 		/// Returns(bool) always returns true if everything goes according to plan.
 		/// </returns>
-		protected void Run()
+		protected bool Run()
 		{
-		
+			bool retVal = true;
+			retVal &= this.TotalPortsSpeed();
+			
+			return retVal;
 		}
 	
 	}
