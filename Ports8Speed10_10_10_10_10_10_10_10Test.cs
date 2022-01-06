@@ -3,9 +3,10 @@
 namespace NetworkCardBuilder
 {
     /// <summary>
-    /// The TestCase claass with input data: Port1 speed 25, Port2 speed 25, Port3 speed 25, Port4 speed 25.
+    /// The TestCase claass with input data: Port1 speed 10, Port2 speed 10, Port3 speed 10, 
+    /// Port4 speed 10, Port5 speed 10, Port6 speed 10, Port7 speed 10, Port8 speed 10.
     /// </summary>
-    class Ports4Speed25_25_25_25Test : NetworkCardFlowBuilder
+    class Ports8Speed10_10_10_10_10_10_10_10Test : NetworkCardFlowBuilder
     {
         #region Fields and Constants
         /// <summary>
@@ -16,7 +17,7 @@ namespace NetworkCardBuilder
         /// <summary>
         /// Name.
         /// </summary>
-        private new const string TestName = "Ports4Speed25_25_25_25Test";
+        private new const string TestName = "Ports8Speed10_10_10_10_10_10_10_10Test";
 
 
         #endregion
@@ -24,9 +25,9 @@ namespace NetworkCardBuilder
         #region Constructors and Destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Ports2Speed10_50Test" /> class.
+        /// Initializes a new instance of the <see cref="Ports8Speed10_10_10_10_10_10_10_10Test" /> class.
         /// </summary>
-        public Ports4Speed25_25_25_25Test() //: base(TestName, TestDescription)
+        public Ports8Speed10_10_10_10_10_10_10_10Test() //: base(TestName, TestDescription)
         {
 
         }
@@ -42,10 +43,14 @@ namespace NetworkCardBuilder
         /// </summary>
         protected override Dictionary<DataStructureFwRegister, int> Portsspeeds => new Dictionary<DataStructureFwRegister, int>()
             {
-                {DataStructureFwRegister.Port00Speed, 25},
-                {DataStructureFwRegister.Port01Speed, 25},
-                {DataStructureFwRegister.Port02Speed, 25},
-                {DataStructureFwRegister.Port03Speed, 25}
+                {DataStructureFwRegister.Port00Speed, 10},
+                {DataStructureFwRegister.Port01Speed, 10},
+                {DataStructureFwRegister.Port02Speed, 10},
+                {DataStructureFwRegister.Port03Speed, 10},
+                {DataStructureFwRegister.Port04Speed, 10},
+                {DataStructureFwRegister.Port05Speed, 10},
+                {DataStructureFwRegister.Port06Speed, 10},
+                {DataStructureFwRegister.Port07Speed, 10}
             };
         #endregion
 

@@ -42,7 +42,8 @@
     <Compile Include="NetworkCardFlowBuilder.cs" />
     <Compile Include="NetworkCardTestTemplate.cs" />
     <Compile Include="Ports2Speed10_50Test.cs" />
-    <Compile Include="Ports4Speed25_25_25_25Test.cs" />
+    <Compile Include="Ports4Speed10_25_50_100.cs" />
+    <Compile Include="Ports8Speed10_10_10_10_10_10_10_10Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
