@@ -28,12 +28,10 @@ namespace NetworkCardBuilder
         #region Public Methods
 
         /// <summary>
-        /// A method that sets the ports speed. 
-        /// Returns true if all specified ports are active and their speeds are set and meet requirements. 
+        /// A method that sets the ports speeds if all specified ports are active and their speeds are set and meet requirements. 
         /// </summary>
         /// <param>
-        /// paramname:Dictionary<DataStructureFwRegister, int> portsspeeds, 
-        /// which accepts the dictionary of pairs: port number; speed.
+        /// Method without parametrs.
         /// </param>
         /// <returns>
         /// Returns(bool) true if all ports speeds set, false if at least one port speed is not set.
@@ -49,11 +47,10 @@ namespace NetworkCardBuilder
         }
 
         /// <summary>
-		/// A method that sets the quantity of ports. 
-        /// Returns true if the all port is active and meet requirements.
+		/// A method that sets the quantity of ports if the all port is active and meet requirements.
 		/// </summary>
         /// <param>
-		/// paramname: int portCount, number of ports to be set.
+		/// Method without parametrs.
 		/// </param>
 		/// <returns>
 		/// Returns(bool) true if port count set, and all ports activated, 
@@ -62,6 +59,7 @@ namespace NetworkCardBuilder
         public virtual bool SetQuantityOfPorts()
         {
             bool retVal = true;
+            // variable portCount requaired quantity of ports
             int portCount = this.Portsspeeds.Count;
             retVal &= portCount != 0 && ((portCount == 1) || (portCount == 2) || (portCount == 4) || (portCount == 8)) && this.SetPortsToActive( out int countOfActivePorts);
             return retVal;
@@ -69,8 +67,7 @@ namespace NetworkCardBuilder
         }
 
         /// <summary>
-		/// A method that verifies that port speeds meet compliance requirements. 
-		/// Returns true if the port speed value is {0; 10; 25; 50; 100} and port count not null.
+		/// A method that verifies that port speeds meet compliance requirements and port count not null.
 		/// </summary>
         /// <param>
 		/// paramname: DataStructureFwRegister key, paramname: int value, 
@@ -86,24 +83,25 @@ namespace NetworkCardBuilder
         }
 
         /// <summary>
-        /// A method that verifies that ports counts meet compliance requirements and activate it. 
+        /// A method that verifies that all ports speeds meet compliance requirements and activate it. 
         /// Returns true if the ports count is {1; 2; 4; 8} and ports counts not null.
         /// </summary>
         /// <param>
         /// Method without parametrs.
         /// </param>
         /// <returns>
-        /// Returns(bool) true if all ports meet requirements and activated, 
-        /// false if at least one port not activated or not meet requirements;
-        /// out(int)countOfActivePorts.
+        /// Returns(bool) true if all ports speeds meet requirements {10; 25; 50; 100}, 
+        /// false if at least one port not activated; out(int)countOfActivePorts quantity of activated ports.
         /// </returns>
         protected bool SetPortsToActive( out int countOfActivePorts)
         {
+            // variable countOfActivePorts is assigned an initial value of 0 for calculation
+            // of the number of activated ports by summation in the cycle.
             countOfActivePorts = 0;
             bool retVal = true;
-            foreach (int j in this.Portsspeeds.Values)
+            foreach (int portSpeed in this.Portsspeeds.Values)
             {
-                retVal &= (j == 10 || j == 25 || j == 50 || j == 100);
+                retVal &= (portSpeed == 10 || portSpeed == 25 || portSpeed == 50 || portSpeed == 100);
                 countOfActivePorts += Convert.ToInt32(retVal);
             }
            
@@ -111,20 +109,24 @@ namespace NetworkCardBuilder
         }
 
         /// <summary>
-        /// A method that verifies that ports counts meet compliance requirements and activate it. 
-        /// Returns true if the ports count is {1; 2; 4; 8} and ports counts not null.
+        /// A method that calculates total speed of all ports and verifies that meet compliance requirements. 
         /// </summary>
         /// <param>
         /// Method without parametrs.
         /// </param>
         /// <returns>
-        /// Returns(bool) true if all ports meet requirements and activated, 
-        /// false if at least one port not activated or not meet requirements;
-        /// out(int)countOfActivePorts.
+        /// Returns(bool) true if total speed of all ports is greater than 0 and less than or equal to 100.
+        /// false if not.
         /// </returns>
         protected bool TotalPortsSpeed()
         {
-            return true;
+            // variable totalSpeed is assigned an initial value of 0 for calculation by summation in the cycle.
+            int totalSpeed = 0;
+            foreach (int portSpeed in this.Portsspeeds.Values)
+            {
+                totalSpeed += portSpeed;
+            }
+            return (totalSpeed > 0) && (totalSpeed <= 100);
         }
 
         #endregion

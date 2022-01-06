@@ -24,18 +24,18 @@ namespace NetworkCardBuilder
 
 		#endregion
 		/// <summary>
-		/// A method that prepares a network card for testing by determining the 
-		/// number of ports and input speeds.
+		/// A method that prepares a network card for testing by determining the quantity of ports and all ports speeds.
 		/// </summary>
 		/// <param>
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Returns(bool) always returns true if everything goes according to plan.
+		/// Returns(bool) always returns true if everything goes according to plan, false on the step which failed.
 		/// </returns>
 
 		protected bool Prepare()  
 		{
+			//variable retVal, which is assigned the initial value of true to determine which of the steps of the test will be false.
 			bool retVal = true;
 			retVal &= this.SetQuantityOfPorts();
 			retVal &= this.SetPortSpeed();
@@ -50,7 +50,7 @@ namespace NetworkCardBuilder
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Returns(bool) always returns true if everything goes according to plan.
+		/// Returns(bool) always returns true if everything goes according to plan, false on the step which failed
 		/// </returns>
 		protected void Clean()
 		{
@@ -64,10 +64,11 @@ namespace NetworkCardBuilder
 		/// Method without parametrs.
 		/// </param>
 		/// <returns>
-		/// Returns(bool) always returns true if everything goes according to plan.
+		/// Returns(bool) always returns true if everything goes according to plan, false on the step which failed
 		/// </returns>
 		protected bool Run()
 		{
+			//variable retVal, which is assigned the initial value of true to determine which of the steps of the test will be false.
 			bool retVal = true;
 			retVal &= this.TotalPortsSpeed();
 			
